@@ -1,7 +1,7 @@
-import app from './app';
+import App from './app'; // Importar a classe App
 
 const port = 3001;
 
-app.listen(port, () => {
-  console.log(`Server is running on http://localhost:${port}`);
-});
+const app = new App(); // Instanciar a classe App
+
+app.start(port); // Iniciar o servidor
