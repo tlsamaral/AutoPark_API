@@ -57,6 +57,7 @@ class App {
     this.app.use('/fotos/', fotoRoutes);
   }
 }
+console.log('');
 
 const { app } = new App();
 
