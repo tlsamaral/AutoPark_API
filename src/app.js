@@ -59,5 +59,5 @@ class App {
 }
 
 const { app } = new App();
-
+console.log('');
 export default app;

@@ -52,7 +52,8 @@ class UserController {
   // Update
   async update(req, res) {
     try {
-      const user = await User.findByPk(req.params.id);
+      console.log(req.body);
+      const user = await User.findByPk(req.body.id);
       console.log(user);
       if (!user) {
         return res.status(400).json({
@@ -63,6 +64,7 @@ class UserController {
       const novosDados = await user.update(req.body);
       return res.json(novosDados);
     } catch (e) {
+      console.log(e);
       return res.status(400).json({
         errors: e.errors.map((err) => `${err.message}`),
       });
@@ -83,6 +85,7 @@ class UserController {
       await user.destroy();
       return res.json(null);
     } catch (e) {
+      console.log(e);
       return res.status(400).json({
         errors: e.errors.map((err) => `${err.message}`),
       });

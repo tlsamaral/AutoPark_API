@@ -11,10 +11,10 @@ class TokenController {
 
       const user = await User.findOne({
         where: { email },
+        order: [[Foto, 'id', 'desc']],
         include: {
           model: Foto,
           attributes: ['url', 'filename'],
-          order: [[{ model: Foto }, 'createdAt', 'DESC']],
         },
       });
 
