@@ -6,13 +6,12 @@ import './database';
 
 import express from 'express';
 import cors from 'cors';
-import http from 'http';
-import { Server } from 'socket.io';
 
 import homeRoutes from './routes/homeRoutes';
 import userRoutes from './routes/userRoutes';
 import tokenRoutes from './routes/tokenRoutes';
 import fotoRoutes from './routes/fotoRoutes';
+import vacancyRoutes from './routes/vacancyRoutes';
 
 // const whiteList = [
 //   'http://localhost:3000',
@@ -36,10 +35,6 @@ class App {
     this.app = express();
     this.middlewares();
     this.routes();
-
-    this.server = http.createServer(this.app);
-    this.io = new Server(this.server);
-    this.socketEvents();
   }
 
   middlewares() {
@@ -60,27 +55,9 @@ class App {
     this.app.use('/users/', userRoutes);
     this.app.use('/tokens/', tokenRoutes);
     this.app.use('/fotos/', fotoRoutes);
-  }
-
-  socketEvents() {
-    this.io.on('connection', (socket) => {
-      console.log('A client connected.', socket.id);
-
-      socket.on('disconnect', () => {
-        console.log('A client disconnected.');
-      });
-
-      socket.on('error', (error) => {
-        console.error('Erro de conexão:', error);
-      });
-    });
-  }
-
-  start(port) {
-    this.server.listen(port, () => {
-      console.log(`Server running on port ${port}`);
-    });
+    this.app.use('/vacancies/', vacancyRoutes);
   }
 }
 
-export default App;
+const { app } = new App();
+export default app;
