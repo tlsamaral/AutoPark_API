@@ -1,6 +1,6 @@
 class HomeController {
   async index(req, res) {
-    res.json('Index');
+    res.json('Welcome to AutoPark');
   }
 }
 
