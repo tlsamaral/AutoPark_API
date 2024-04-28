@@ -63,9 +63,13 @@
           },
         },
       },
+      is_occupied: {
+        type: _sequelize2.default.BOOLEAN,
+        defaultValue: '',
+      },
     }, {
       sequelize,
-      tableName: 'vanancies',
+      tableName: 'vacancies',
     });
   }
 } exports.default = Vacancy;
