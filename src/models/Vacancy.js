@@ -63,9 +63,13 @@ export default class Vacancy extends Model {
           },
         },
       },
+      is_occupied: {
+        type: Sequelize.BOOLEAN,
+        defaultValue: '',
+      },
     }, {
       sequelize,
-      tableName: 'vanancies',
+      tableName: 'vacancies',
     });
   }
 }
