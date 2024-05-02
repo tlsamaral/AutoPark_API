@@ -12,6 +12,7 @@ var _userRoutes = require('./routes/userRoutes'); var _userRoutes2 = _interopReq
 var _tokenRoutes = require('./routes/tokenRoutes'); var _tokenRoutes2 = _interopRequireDefault(_tokenRoutes);
 var _fotoRoutes = require('./routes/fotoRoutes'); var _fotoRoutes2 = _interopRequireDefault(_fotoRoutes);
 var _vacancyRoutes = require('./routes/vacancyRoutes'); var _vacancyRoutes2 = _interopRequireDefault(_vacancyRoutes);
+var _turnstileRoutes = require('./routes/turnstileRoutes'); var _turnstileRoutes2 = _interopRequireDefault(_turnstileRoutes);
 
 // const whiteList = [
 //   'http://localhost:3000',
@@ -56,6 +57,7 @@ class App {
     this.app.use('/tokens/', _tokenRoutes2.default);
     this.app.use('/fotos/', _fotoRoutes2.default);
     this.app.use('/vacancies/', _vacancyRoutes2.default);
+    this.app.use('/turnstiles/', _turnstileRoutes2.default);
   }
 }
 

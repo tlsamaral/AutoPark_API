@@ -3,8 +3,9 @@ import databaseConfig from '../config/database';
 import Vacancy from '../models/Vacancy';
 import User from '../models/User';
 import Foto from '../models/Foto';
+import Turnstile from '../models/Turnstile';
 
-const models = [Vacancy, User, Foto];
+const models = [Vacancy, User, Foto, Turnstile];
 
 try {
   const connection = new Sequelize(databaseConfig);

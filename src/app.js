@@ -12,6 +12,7 @@ import userRoutes from './routes/userRoutes';
 import tokenRoutes from './routes/tokenRoutes';
 import fotoRoutes from './routes/fotoRoutes';
 import vacancyRoutes from './routes/vacancyRoutes';
+import turnstileRoutes from './routes/turnstileRoutes';
 
 // const whiteList = [
 //   'http://localhost:3000',
@@ -56,6 +57,7 @@ class App {
     this.app.use('/tokens/', tokenRoutes);
     this.app.use('/fotos/', fotoRoutes);
     this.app.use('/vacancies/', vacancyRoutes);
+    this.app.use('/turnstiles/', turnstileRoutes);
   }
 }
 

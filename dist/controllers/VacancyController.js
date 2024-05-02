@@ -61,6 +61,7 @@ class VacancyController {
       }
 
       const newData = await vacancy.update(req.body);
+      console.log(newData);
       return res.json(newData);
     } catch (e) {
       console.log(e);
