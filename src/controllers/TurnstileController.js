@@ -60,7 +60,6 @@ class TurnstileController {
       }
 
       const newData = await turnstiles.update(req.body);
-      console.log(newData);
       return res.json(newData);
     } catch (e) {
       console.log(e);
