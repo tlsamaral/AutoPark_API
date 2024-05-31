@@ -8,4 +8,5 @@ router.get('/', turnstileController.index);
 router.get('/:id', turnstileController.show);
 router.put('/', turnstileController.update);
 router.delete('/:id', turnstileController.delete);
+
 export default router;
