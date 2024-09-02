@@ -1,18 +1,18 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
-import { resolve } from 'path';
-import dotenv from 'dotenv';
+import { resolve } from "path";
+import dotenv from "dotenv";
 dotenv.config();
-import './database';
+import "./database";
 
-import express from 'express';
-import cors from 'cors';
+import cors from "cors";
+import express from "express";
 
-import homeRoutes from './routes/homeRoutes';
-import userRoutes from './routes/userRoutes';
-import tokenRoutes from './routes/tokenRoutes';
-import fotoRoutes from './routes/fotoRoutes';
-import vacancyRoutes from './routes/vacancyRoutes';
-import turnstileRoutes from './routes/turnstileRoutes';
+import fotoRoutes from "./routes/fotoRoutes";
+import homeRoutes from "./routes/homeRoutes";
+import tokenRoutes from "./routes/tokenRoutes";
+import turnstileRoutes from "./routes/turnstileRoutes";
+import userRoutes from "./routes/userRoutes";
+import vacancyRoutes from "./routes/vacancyRoutes";
 
 // const whiteList = [
 //   'http://localhost:3000',
@@ -32,33 +32,40 @@ import turnstileRoutes from './routes/turnstileRoutes';
 // };
 
 class App {
-  constructor() {
-    this.app = express();
-    this.middlewares();
-    this.routes();
-  }
+	constructor() {
+		this.app = express();
+		this.middlewares();
+		this.routes();
+	}
 
-  middlewares() {
-    // this.app.use(helmet());
-    this.app.use(express.urlencoded({ extended: true }));
-    this.app.use(express.json());
-    this.app.use(cors({ origin: '*' }));
-    this.app.use('/images/', (req, res, next) => {
-      res.setHeader('Access-Control-Allow-Origin', '*');
-      res.setHeader('Access-Control-Allow-Methods', 'GET');
-      res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
-      next();
-    }, express.static(resolve(__dirname, '..', 'uploads', 'images')));
-  }
+	middlewares() {
+		// this.app.use(helmet());
+		this.app.use(express.urlencoded({ extended: true }));
+		this.app.use(express.json());
+		this.app.use(cors({ origin: "*" }));
+		this.app.use(
+			"/images/",
+			(req, res, next) => {
+				res.setHeader("Access-Control-Allow-Origin", "*");
+				res.setHeader("Access-Control-Allow-Methods", "GET");
+				res.setHeader(
+					"Access-Control-Allow-Headers",
+					"Content-Type, Authorization",
+				);
+				next();
+			},
+			express.static(resolve(__dirname, "..", "uploads", "images")),
+		);
+	}
 
-  routes() {
-    this.app.use('/', homeRoutes);
-    this.app.use('/users/', userRoutes);
-    this.app.use('/tokens/', tokenRoutes);
-    this.app.use('/fotos/', fotoRoutes);
-    this.app.use('/vacancies/', vacancyRoutes);
-    this.app.use('/turnstiles/', turnstileRoutes);
-  }
+	routes() {
+		this.app.use("/", homeRoutes);
+		this.app.use("/users/", userRoutes);
+		this.app.use("/tokens/", tokenRoutes);
+		this.app.use("/fotos/", fotoRoutes);
+		this.app.use("/vacancies/", vacancyRoutes);
+		this.app.use("/turnstiles/", turnstileRoutes);
+	}
 }
 
 const { app } = new App();
